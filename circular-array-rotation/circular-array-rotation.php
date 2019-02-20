@@ -2,40 +2,22 @@
 
 // Complete the circularArrayRotation function below.
 function circularArrayRotation($a, $k, $queries, $n) {
-    $output = [];
     foreach ($queries as $i) {
-        $output[] = $a[($i + $n - $k) % $n];
+        print $a[($i + $n - $k) % $n] . "\n";
     }
-    return $output;
 }
 
-$fptr = fopen(getenv("OUTPUT_PATH"), "w");
+$line = trim(fgets(STDIN));
+list($n, $k, $q) = explode(' ', $line);
 
-$stdin = fopen("php://stdin", "r");
+$line = trim(fgets(STDIN));
+$a = array_map('intval', explode(' ', $line));
 
-fscanf($stdin, "%[^\n]", $nkq_temp);
-$nkq = explode(' ', $nkq_temp);
-
-$n = intval($nkq[0]);
-
-$k = intval($nkq[1]);
-
-$q = intval($nkq[2]);
-
-fscanf($stdin, "%[^\n]", $a_temp);
-
-$a = array_map('intval', preg_split('/ /', $a_temp, -1, PREG_SPLIT_NO_EMPTY));
-
-$queries = array();
+$queries = [];
 
 for ($i = 0; $i < $q; $i++) {
-    fscanf($stdin, "%d\n", $queries_item);
+    fscanf(STDIN, "%d\n", $queries_item);
     $queries[] = $queries_item;
 }
 
-$result = circularArrayRotation($a, $k, $queries, $n);
-
-fwrite($fptr, implode("\n", $result) . "\n");
-
-fclose($stdin);
-fclose($fptr);
+circularArrayRotation($a, $k, $queries, $n);
