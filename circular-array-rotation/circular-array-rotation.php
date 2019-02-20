@@ -16,7 +16,7 @@ $a = array_map('intval', explode(' ', $line));
 $queries = [];
 
 for ($i = 0; $i < $q; $i++) {
-    fscanf(STDIN, "%d\n", $queries_item);
+    fscanf(STDIN, "%d", $queries_item);
     $queries[] = $queries_item;
 }
 
